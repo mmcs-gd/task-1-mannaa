@@ -33,6 +33,16 @@ function draw(tFrame) {
     drawScores(context)
     drawFailScreen(context)
 }
+/*
+The first lines are moving the platform behind the mouse. Divided by 10 to make it smoother. 
+
+The second is to change the coordinates of the ball - we add its speed to the current coordinates and get the coordinates for the next frame.
+
+The third is a bonus that appears every 15 seconds. If he's invisible, and calculate its coordinates is not necessary.
+
+The latter is checking for collisions with walls and changing the direction of movement if the ball collided with the wall.*/
+
+
 
 function update(tick) {
     if (gameState.isFail) 
