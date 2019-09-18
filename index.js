@@ -47,20 +47,23 @@ The latter is checking for collisions with walls and changing the direction of m
 function update(tick) {
     if (gameState.isFail) 
         stopGame(gameState.stopCycle)
-    
+    //The first lines are moving the platform behind the mouse. Divided by 10 to make it smoother.
     const vx = (gameState.pointer.x - gameState.player.x) / 10
     gameState.player.x += vx
 
+    //The second is to change the coordinates of the ball - we add its speed to the current coordinates and get the coordinates for the next frame
     const ball = gameState.ball
     ball.y += ball.vy
     ball.x += ball.vx
 
+    //The third is a bonus that appears every 15 seconds. If he's invisible, and calculate its coordinates is not necessary.
     const bonus = gameState.bonus;
     if (bonus.isVisible) {
        bonus.vy += 0.1
        bonus.y += bonus.vy
        bonus.x += bonus.vx
 
+        //The latter is checking for collisions with walls and changing the direction of movement if the ball collided with the wall.*/
        const wall = isWallCollision(bonus)
        if (wall === direction.left && bonus.vx > 0) {
            bonus.vx = -bonus.vx
