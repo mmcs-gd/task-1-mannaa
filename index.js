@@ -70,7 +70,10 @@ function update(tick) {
        } else if (wall === direction.right && bonus.vx < 0) {
            bonus.vx = -bonus.vx
        }
+//Letting the paddle hit the ball
+//Section
 
+//The last thing to do in this lesson is to create some kind of collision detection between the ball and the paddle, so it can bounce off it and get back into the play area. The easiest thing to do is to check whether the center of the ball is between the left and right edges of the paddle. Update the last bit of code you modified again, to the following:
        const player = isPlayerCollision(bonus)
        if (player === direction.left && bonus.vx > 0) {
            bonus.vx = -bonus.vx
@@ -80,7 +83,7 @@ function update(tick) {
            bonus.isVisible = false
            gameState.scores += 15
        }
-
+//If the ball hits the bottom edge of the Canvas we need to check whether it hits the paddle . if yes, then it bounces off just like you'd expect; if not then the game is over as before.
         if (isRoofCollision(bonus)) bonus.vy = -bonus.vy 
         if (isBottomCollision(bonus)) bonus.isVisible = false
     }
